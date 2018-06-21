@@ -4,7 +4,8 @@
   "description": "A node example with redis implementation",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "node index.js"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,45 @@
   },
   "homepage": "https://github.com/SandeepThakare/nodejs_with_redis#readme",
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "apn": "^2.2.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "bcrypt": "^2.0.0",
+    "body-parser": "^1.18.2",
+    "busboy-body-parser": "^0.3.1",
+    "chai": "^4.1.2",
+    "connect-ensure-login": "^0.1.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "core-js": "^2.4.1",
+    "cors": "^2.8.4",
+    "dotenv": "^4.0.0",
+    "es6-promise": "^4.1.1",
+    "express-session": "^1.15.6",
+    "firebase": "^4.10.1",
+    "firebase-admin": "^5.9.0",
+    "geodist": "^0.2.1",
+    "handlebars": "^4.0.11",
+    "jimp": "^0.2.28",
+    "jsonschema": "^1.2.0",
+    "jsonwebtoken": "^8.0.1",
+    "mocha": "^3.5.3",
+    "mongodb": "^3.0.3",
+    "mongoose": "^4.11.14",
+    "nodemailer": "^4.4.2",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "pm2": "^2.8.0",
+    "request": "^2.83.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.15.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "nodemon": "^1.17.1"
   }
 }
