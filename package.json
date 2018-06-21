@@ -1,0 +1,19 @@
+{
+  "name": "nodejs_with_redis",
+  "version": "1.0.0",
+  "description": "A node example with redis implementation",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SandeepThakare/nodejs_with_redis.git"
+  },
+  "author": "Sandeep Thakare",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SandeepThakare/nodejs_with_redis/issues"
+  },
+  "homepage": "https://github.com/SandeepThakare/nodejs_with_redis#readme"
+}
