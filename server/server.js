@@ -13,6 +13,10 @@ if (cluster.isMaster) {
 	app.get('/', (req, res) => {
 		res.send('hi there !!!');
 	});
+    
+	app.get('/hi', (req, res) => {
+		res.send('this is very fast !!!');
+	});
 
 	app.listen(3000);
 
