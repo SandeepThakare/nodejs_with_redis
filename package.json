@@ -5,7 +5,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "node index.js"
+    "start": "node index.js",
+    "server": "nodemon index.js --ignore tests",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client",
+    "heroku-postbuild": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -50,11 +55,21 @@
     "passport-local": "^1.0.0",
     "pm2": "^2.8.0",
     "request": "^2.83.0",
-    "webworker-threads": "^0.7.15"
+    "webworker-threads": "^0.7.15",
+    "aws-sdk": "^2.188.0",
+    "concurrently": "^3.5.0",
+    "cookie-session": "^2.0.0-beta.2",
+    "jest": "^22.1.4",
+    "migrate-mongoose": "^3.2.2",
+    "nodemon": "^1.11.0",
+    "passport-google-oauth20": "^1.0.0",
+    "path-parser": "^2.0.2",
+    "puppeteer": "^1.0.0",
+    "redis": "^2.8.0",
+    "uuid": "^3.2.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-eslint": "^7.2.3",
     "eslint": "^4.15.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
