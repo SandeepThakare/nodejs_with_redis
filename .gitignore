@@ -3,6 +3,6 @@ node_modules
 jspm_packages
 ./client/node_modules
 
-/config
-
 git_push.sh
+
+dev.js

@@ -2,6 +2,11 @@ import { model } from 'mongoose';
 import requireLogin from '../middlewares/requireLogin';
 import Blog from '../models/Blog';
 // const Blog = model('Blog');
+import redis from 'redis';
+import util from 'util';
+const redisURL = 'redis://127.0.0.1:6379';
+const client = redis.createClient(redisURL);
+client.get = util.promisify(client.get);
 
 export default function (app) {
 	app.get('/api/blogs/:id', requireLogin, async (req, res) => {
@@ -12,7 +17,22 @@ export default function (app) {
 		res.send(blog);
 	});
 	app.get('/api/blogs', requireLogin, async (req, res) => {
+
+		//Check if we have any cache data related to query is present or not
+		const cachedBlog = await client.get(req.user.id);
+
+		//if present then return it from cache
+		if(cachedBlog) {
+			console.log('SERVING FROM CACHE');
+			return res.send(JSON.parse(cachedBlog));
+		}
+
 		const blogs = await Blog.find({ _user: req.user.id });
+
+		//if not present in cache then we set it in cache
+		client.set(req.user.id, JSON.stringify(blogs));
+
+		console.log('SERVING FROM MONGODB');
 		res.send(blogs);
 	});
 	app.post('/api/blogs', requireLogin, async (req, res) => {
