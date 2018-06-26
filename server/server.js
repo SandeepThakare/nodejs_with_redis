@@ -1,13 +1,14 @@
-import express, { static } from "express";
-import { Promise, connect } from "mongoose";
-import cookieSession from "cookie-session";
-import { initialize, session } from "passport";
-import { json } from "body-parser";
-import { mongoURI, cookieKey } from "../config/keys";
+'use strict';
+import express from 'express';
+import { connect } from 'mongoose';
+import cookieSession from 'cookie-session';
+import { initialize, session } from 'passport';
+import { json } from 'body-parser';
+import { mongoURI, cookieKey } from '../config/keys';
 
-import "../models/User";
-import "../models/Blog";
-import "../services/passport";
+import '../models/User';
+import '../models/Blog';
+import '../services/passport';
 Promise = global.Promise;
 connect(mongoURI, { useMongoClient: true });
 
@@ -27,7 +28,7 @@ require('../routes/authRoutes')(app);
 require('../routes/blogRoutes')(app);
 
 if (['production'].includes(process.env.NODE_ENV)) {
-	app.use(static('../client/build'));
+	app.use('../client/build');
 
 	const path = require('path');
 	app.get('*', (req, res) => {

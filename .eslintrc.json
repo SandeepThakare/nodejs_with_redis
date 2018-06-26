@@ -16,6 +16,7 @@
         "ecmaVersion": 2017
     },
     "rules": {
+        "no-global-assign": 1,
         "no-console":0,
         "indent": [
             "error",
@@ -27,8 +28,7 @@
         ],
         "quotes": [
             "error",
-            "single",
-            "double"
+            "single"
         ],
         "semi": [
             "error",
