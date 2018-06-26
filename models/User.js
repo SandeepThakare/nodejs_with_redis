@@ -1,9 +1,10 @@
-import mongoose, { model } from 'mongoose';
-const { Schema } = mongoose;
+import mongoose from 'mongoose';
+// const { Schema } = mongoose;
 
-const userSchema = new Schema({
+const userSchema = mongoose.model('User', {
 	googleId: String,
 	displayName: String
 });
 
-model('User', userSchema);
+export default userSchema;
+// model('User', userSchema);

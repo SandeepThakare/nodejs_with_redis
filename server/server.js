@@ -1,16 +1,16 @@
 'use strict';
 import express from 'express';
-import { connect } from 'mongoose';
+import mongoose from 'mongoose';
 import cookieSession from 'cookie-session';
-import { initialize, session } from 'passport';
+import passport from 'passport';
 import { json } from 'body-parser';
 import { mongoURI, cookieKey } from '../config/keys';
 
 import '../models/User';
 import '../models/Blog';
 import '../services/passport';
-Promise = global.Promise;
-connect(mongoURI, { useMongoClient: true });
+mongoose.Promise = global.Promise;
+mongoose.connect(mongoURI, { useMongoClient: true });
 
 const app = express();
 
@@ -21,11 +21,11 @@ app.use(
 		keys: [cookieKey]
 	})
 );
-app.use(initialize());
-app.use(session());
+app.use(passport.initialize());
+app.use(passport.session());
 
-require('../routes/authRoutes')(app);
-require('../routes/blogRoutes')(app);
+require('../routes/authRoutes').default(app);
+require('../routes/blogRoutes').default(app);
 
 if (['production'].includes(process.env.NODE_ENV)) {
 	app.use('../client/build');

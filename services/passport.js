@@ -1,21 +1,21 @@
-import { serializeUser, deserializeUser, use } from 'passport';
+import Passport from 'passport';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
-import { model } from 'mongoose';
+// import { model } from 'mongoose';
 import { googleClientID, googleClientSecret } from '../config/keys';
+import User from '../models/User';
+// 	const User = model('User');
 
-const User = model('User');
-
-serializeUser((user, done) => {
+Passport.serializeUser((user, done) => {
 	done(null, user.id);
 });
 
-deserializeUser((id, done) => {
+Passport.deserializeUser((id, done) => {
 	User.findById(id).then(user => {
 		done(null, user);
 	});
 });
 
-use(
+Passport.use(
 	new GoogleStrategy(
 		{
 			callbackURL: '/auth/google/callback',

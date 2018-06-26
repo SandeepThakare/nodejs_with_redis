@@ -1,11 +1,13 @@
-import mongoose, { model } from 'mongoose';
+import mongoose from 'mongoose';
 const { Schema } = mongoose;
 
-const blogSchema = new Schema({
+const blogSchema = mongoose.model('Blog', {
 	title: String,
 	content: String,
 	createdAt: { type: Date, default: Date.now },
 	_user: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 
-model('Blog', blogSchema);
+export default blogSchema;
+// model('Blog', blogSchema);
+	

@@ -1,7 +1,7 @@
 // const passport = require('passport');
 import passport from 'passport';
 
-export default function (app) {
+export default app => {
 	app.get('/auth/google', passport.authenticate('google', {
 		scope: ['profile', 'email']
 	}));
@@ -15,4 +15,4 @@ export default function (app) {
 	app.get('/api/current_user', (req, res) => {
 		res.send(req.user);
 	});
-}
+};

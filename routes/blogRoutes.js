@@ -1,7 +1,7 @@
 import { model } from 'mongoose';
 import requireLogin from '../middlewares/requireLogin';
-
-const Blog = model('Blog');
+import Blog from '../models/Blog';
+// const Blog = model('Blog');
 
 export default function (app) {
 	app.get('/api/blogs/:id', requireLogin, async (req, res) => {
