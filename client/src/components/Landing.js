@@ -1,14 +1,14 @@
 import React from 'react';
 
 const Landing = () => {
-  return (
-    <div style={{ textAlign: 'center' }}>
-      <h1>
+	return (
+		<div style={{ textAlign: 'center' }}>
+			<h1>
         Blogster!
-      </h1>
+			</h1>
       Write private blogs
-    </div>
-  );
+		</div>
+	);
 };
 
 export default Landing;
