@@ -1,4 +1,3 @@
-import { model } from 'mongoose';
 import requireLogin from '../middlewares/requireLogin';
 import Blog from '../models/Blog';
 // const Blog = model('Blog');
