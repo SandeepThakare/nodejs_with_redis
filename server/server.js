@@ -9,6 +9,7 @@ import { mongoURI, cookieKey } from '../config/keys';
 import '../models/User';
 import '../models/Blog';
 import '../services/passport';
+import '../services/cache';
 mongoose.Promise = global.Promise;
 mongoose.connect(mongoURI, { useMongoClient: true });
 

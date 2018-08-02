@@ -17,22 +17,27 @@ export default function (app) {
 	});
 	app.get('/api/blogs', requireLogin, async (req, res) => {
 
-		//Check if we have any cache data related to query is present or not
-		const cachedBlog = await client.get(req.user.id);
+		// //Check if we have any cache data related to query is present or not
+		// const cachedBlog = await client.get(req.user.id);
 
-		//if present then return it from cache
-		if(cachedBlog) {
-			console.log('SERVING FROM CACHE');
-			return res.send(JSON.parse(cachedBlog));
-		}
+		// //if present then return it from cache
+		// if(cachedBlog) {
+		// 	console.log('SERVING FROM CACHE');
+		// 	return res.send(JSON.parse(cachedBlog));
+		// }
+
+		// const blogs = await Blog.find({ _user: req.user.id });
+
+		// //if not present in cache then we set it in cache
+		// client.set(req.user.id, JSON.stringify(blogs));
+
+		// console.log('SERVING FROM MONGODB');
+		// res.send(blogs);
 
 		const blogs = await Blog.find({ _user: req.user.id });
 
-		//if not present in cache then we set it in cache
-		client.set(req.user.id, JSON.stringify(blogs));
-
-		console.log('SERVING FROM MONGODB');
 		res.send(blogs);
+
 	});
 	app.post('/api/blogs', requireLogin, async (req, res) => {
 		const { title, content } = req.body;
